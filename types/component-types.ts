@@ -1,10 +1,9 @@
-export type TemperatureUnits = {
-    celsius: string,
-    fahrenheit: string
-}
-export type TemperatureUnit = keyof TemperatureUnits;
-
-export enum TEMPERATURE_UNITS {
+export enum TEMPERATURE_UNIT {
     CELSIUS = 'celsius',
     FAHRENHEIT = 'fahrenheit',
 }
+
+export type TemperatureUnits = {
+    [TEMPERATURE_UNIT.CELSIUS]: string,
+    [TEMPERATURE_UNIT.FAHRENHEIT]: string,
+};

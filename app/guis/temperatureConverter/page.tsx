@@ -1,12 +1,8 @@
 'use client';
 
-import Textfield from '@/components/common/textfield';
+import TheInput from '@/components/common/theInput';
 import ContentWrapper from '@/components/layout/contentWrapper';
-import {
-  TEMPERATURE_UNITS,
-  TemperatureUnit,
-  TemperatureUnits,
-} from '@/types/component-types';
+import { TEMPERATURE_UNIT, TemperatureUnits } from '@/types/component-types';
 import { useState } from 'react';
 
 export default function TemperatureConverter() {
@@ -17,14 +13,14 @@ export default function TemperatureConverter() {
 
   const getNewTemperature = (
     value: number,
-    temperatureUnit: TEMPERATURE_UNITS,
-    targetUnit: TEMPERATURE_UNITS
+    temperatureUnit: TEMPERATURE_UNIT,
+    targetUnit: TEMPERATURE_UNIT
   ): string => {
     if (temperatureUnit === targetUnit) {
       return value.toString();
     }
 
-    if (temperatureUnit === TEMPERATURE_UNITS.CELSIUS) {
+    if (temperatureUnit === TEMPERATURE_UNIT.CELSIUS) {
       return (Math.round((value * (9 / 5) + 32) * 100) / 100).toString();
     } else {
       return (Math.round((value - 32) * (5 / 9) * 100) / 100).toString();
@@ -33,18 +29,18 @@ export default function TemperatureConverter() {
 
   const changeTemperaturesOnInput = (
     e: React.ChangeEvent<HTMLInputElement>,
-    temperatureUnit: TEMPERATURE_UNITS
+    temperatureUnit: TEMPERATURE_UNIT
   ) => {
     setTemperatures({
       celsius: getNewTemperature(
         Number(e.target.value),
         temperatureUnit,
-        TEMPERATURE_UNITS.CELSIUS
+        TEMPERATURE_UNIT.CELSIUS
       ),
       fahrenheit: getNewTemperature(
         Number(e.target.value),
         temperatureUnit,
-        TEMPERATURE_UNITS.FAHRENHEIT
+        TEMPERATURE_UNIT.FAHRENHEIT
       ),
     });
   };
@@ -52,21 +48,21 @@ export default function TemperatureConverter() {
   return (
     <ContentWrapper title='Temperature converter'>
       <div className='flex mx-auto justify-center gap-8 items-center'>
-        <Textfield
+        <TheInput
           onChangeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
-            changeTemperaturesOnInput(e, TEMPERATURE_UNITS.CELSIUS)
+            changeTemperaturesOnInput(e, TEMPERATURE_UNIT.CELSIUS)
           }
           type='number'
-          label='Celsius'
+          label={TEMPERATURE_UNIT.CELSIUS.toUpperCase()}
           value={temperatures.celsius}
         />
         <span>=</span>
-        <Textfield
+        <TheInput
           onChangeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
-            changeTemperaturesOnInput(e, TEMPERATURE_UNITS.FAHRENHEIT)
+            changeTemperaturesOnInput(e, TEMPERATURE_UNIT.FAHRENHEIT)
           }
           type='number'
-          label='Fahrenheit'
+          label={TEMPERATURE_UNIT.FAHRENHEIT.toUpperCase()}
           value={temperatures.fahrenheit}
         />
       </div>
