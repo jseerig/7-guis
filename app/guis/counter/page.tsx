@@ -8,7 +8,7 @@ export default function Counter() {
   const [counter, setCounter] = useState(0);
   return (
     <ContentWrapper title='Counter'>
-      <div className='flex mx-auto justify-center gap-20 items-center'>
+      <div className='mx-auto flex items-center justify-center gap-20'>
         <span className='text-4xl font-bold'>{counter}</span>
         <TheButton
           text='Count'

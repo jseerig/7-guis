@@ -11,9 +11,9 @@ export default function TheInput({
   ...rest
 }: TheInputProps) {
   return (
-    <div className='flex flex-row gap-4 items-center w-full justify-between'>
+    <div className='flex w-full flex-row items-center justify-between gap-4'>
       <input
-        className='border w-auto self-start border-green-700 text-right bg-red-50 rounded-xl p-2 hover:bg-green-400 transition-colors ease-in-out duration-500 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-gray-500 disabled:border-green-100'
+        className='w-auto self-start rounded-xl border border-green-700 p-2 text-right transition-colors duration-500 ease-in-out hover:bg-green-400 disabled:cursor-not-allowed disabled:border-green-100 disabled:bg-gray-200 disabled:text-gray-500'
         onChange={onChangeHandler}
         id={label}
         {...rest}

@@ -8,13 +8,13 @@ import { usePathname } from 'next/navigation';
 export default function NavLink() {
   const pathname = usePathname() as Route;
   return (
-    <nav className='my-8 container mx-auto'>
+    <nav className='container mx-auto my-8'>
       {pathname !== '/' && (
         <Link
-          className='group text-xl text-slate-700 flex gap-2 items-center hover:text-slate-900 transition-colors ease-in-out duration-500'
+          className='group flex items-center gap-2 text-xl text-slate-700 transition-colors duration-500 ease-in-out hover:text-slate-900'
           href='/'
         >
-          <ArrowLeftIcon className='w-6 h-6 group-hover:text-green-700 group-hover:mr-2 transition-all ease-in-out duration-500' />
+          <ArrowLeftIcon className='h-6 w-6 transition-all duration-500 ease-in-out group-hover:mr-2 group-hover:text-green-700' />
           zurück zur Übersicht
         </Link>
       )}

@@ -21,13 +21,13 @@ export default function ProgressBar({
 
       return () => clearInterval(interval);
     }
-  }, [current, end]);
+  }, [current, end, setCurrent]);
 
   return (
-    <div className='w-full h-4 bg-gray-50 rounded-xl'>
+    <div className='h-4 w-full rounded-xl bg-gray-50'>
       <div
         className={
-          'h-full bg-green-400 rounded-xl transition-all ease-in-out duration-100'
+          'h-full rounded-xl bg-green-400 transition-all duration-100 ease-in-out'
         }
         style={{ width: `${calculatedWidth}%` }}
       ></div>

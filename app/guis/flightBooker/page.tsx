@@ -64,9 +64,9 @@ export default function FlightBooker() {
 
   return (
     <ContentWrapper title='Flight Booker'>
-      <div className='flex flex-col mx-auto w-1/3 justify-center gap-8 items-center'>
+      <div className='mx-auto flex w-1/3 flex-col items-center justify-center gap-8'>
         <select
-          className='border border-gray-300 rounded-md p-2 w-full'
+          className='w-full rounded-md border border-gray-300 p-2'
           onChange={handleTypeChanged}
           value={flightType}
         >

@@ -17,7 +17,7 @@ export default function TheButton({
   return (
     <button
       {...rest}
-      className={`bg-green-100 rounded-xl h-full p-8 hover:bg-green-400 transition-all ease-in-out duration-500 drop-shadow-xl hover:drop-shadow-none disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-gray-500 disabled:drop-shadow-none ${rest.className}`}
+      className={`h-full rounded-xl bg-green-100 p-8 drop-shadow-xl transition-all duration-500 ease-in-out hover:bg-green-400 hover:drop-shadow-none disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-500 disabled:drop-shadow-none ${rest.className}`}
       onClick={onClickHandler}
     >
       {text}

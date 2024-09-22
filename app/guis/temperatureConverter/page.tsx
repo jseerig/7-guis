@@ -47,7 +47,7 @@ export default function TemperatureConverter() {
 
   return (
     <ContentWrapper title='Temperature converter'>
-      <div className='flex mx-auto justify-center gap-8 items-center'>
+      <div className='mx-auto flex items-center justify-center gap-8'>
         <TheInput
           onChangeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
             changeTemperaturesOnInput(e, TEMPERATURE_UNIT.CELSIUS)

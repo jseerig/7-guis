@@ -11,9 +11,9 @@ export default function LinkCard({ link, title, icon }: LinkCardProps) {
   return (
     <Link
       href={link}
-      className='group rounded-lg border px-5 py-4 transition-all border-gray-300 bg-gray-100 hover:bg-green-400 hover:drop-shadow-2xl ease-in-out duration-500 cursor-pointer'
+      className='group cursor-pointer rounded-lg border border-gray-300 bg-gray-100 px-5 py-4 transition-all duration-500 ease-in-out hover:bg-green-400 hover:drop-shadow-2xl'
     >
-      {icon && <img src={icon} alt={title} className='w-8 h-8' />}
+      {icon && <img src={icon} alt={title} className='h-8 w-8' />}
       <p className='text-center text-2xl font-bold'>{title}</p>
     </Link>
   );

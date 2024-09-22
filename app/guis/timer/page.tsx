@@ -14,14 +14,14 @@ export default function Timer() {
   const currentTimeInSec = currentTime / 1000;
   return (
     <ContentWrapper title='Timer'>
-      <div className='grid grid-cols-2 mx-auto w-1/3 justify-center gap-8 items-center'>
+      <div className='mx-auto grid w-1/3 grid-cols-2 items-center justify-center gap-8'>
         <p>{TIMER_LABELS.ELAPSED_TIME}</p>
         <ProgressBar
           end={duration}
           current={currentTime}
           setCurrent={setCurrentTime}
         />
-        <p className='col-span-2 text-center text-green-800 bold'>
+        <p className='bold col-span-2 text-center text-green-800'>
           {currentTimeInSec} s
         </p>
         <p>{TIMER_LABELS.DURATION}</p>
