@@ -12,6 +12,7 @@ export default function Home() {
         />
         <LinkCard title='Flight Booker' link='/guis/flightBooker' />
         <LinkCard title='Timer' link='/guis/timer' />
+        <LinkCard title='CRUD' link='/guis/crud' />
       </div>
     </ContentWrapper>
   );
