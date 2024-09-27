@@ -1,8 +1,8 @@
 export const CRUD_LABELS = {
     TITLE: 'CRUD',
     FILTER: 'Filter prefix',
-    NAME: 'Vorname:',
-    SURNAME: 'Nachname:',
+    NAME: 'Name:',
+    SURNAME: 'Surname:',
     CREATE: 'Create',
     UPDATE: 'Update',
     DELETE: 'Delete',

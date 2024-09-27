@@ -3,8 +3,12 @@
 import TheButton from '@/components/common/theButton';
 import TheInput from '@/components/common/theInput';
 import ContentWrapper from '@/components/layout/contentWrapper';
-import { FLIGHT_TYPES_LABELS } from '@/constants';
-import { FLIGHT_DATE, FLIGHT_TYPE, FlightDates } from '@/types/component-types';
+import { FLIGHT_BOOKER_LABELS } from '@/constants/flightBooker';
+import {
+  FLIGHT_DATE,
+  FLIGHT_TYPE,
+  FlightDates,
+} from '@/types/flightBooker-types';
 import { useState } from 'react';
 
 export default function FlightBooker() {
@@ -25,7 +29,7 @@ export default function FlightBooker() {
   }
 
   function handleDatesChanged(event: React.ChangeEvent<HTMLInputElement>) {
-    const errorStyle = ['border-red-500', 'bg-red-100', 'hover:bg-red-200'];
+    const errorStyle = ['border-red-500', '!bg-red-200', 'hover:bg-red-200'];
     setFlightDates({ ...flightDates, [event.target.id]: event.target.value });
 
     if (event.target.id === FLIGHT_DATE.DEPARTURE) {
@@ -58,12 +62,21 @@ export default function FlightBooker() {
 
   const handleBook = () => {
     alert(
-      `You have booked a ${flightType} flight on ${flightDates.departureDate} ${flightType === FLIGHT_TYPE.RETURN ? 'and ' + flightDates.returnDate : ''} `
+      FLIGHT_BOOKER_LABELS.ALERT.replace(
+        '{flightType}',
+        FLIGHT_BOOKER_LABELS[flightType]
+      ).replace(
+        '{date}',
+        flightDates.departureDate +
+          (flightType === FLIGHT_TYPE.RETURN
+            ? ' and ' + flightDates.returnDate
+            : '')
+      )
     );
   };
 
   return (
-    <ContentWrapper title='Flight Booker'>
+    <ContentWrapper title={FLIGHT_BOOKER_LABELS.TITLE}>
       <div className='mx-auto flex w-1/3 flex-col items-center justify-center gap-8'>
         <select
           className='w-full rounded-md border border-gray-300 p-2'
@@ -72,7 +85,7 @@ export default function FlightBooker() {
         >
           {Object.values(FLIGHT_TYPE).map((type) => (
             <option key={type} value={type}>
-              {FLIGHT_TYPES_LABELS[type]}
+              {FLIGHT_BOOKER_LABELS[type]}
             </option>
           ))}
         </select>
@@ -82,7 +95,7 @@ export default function FlightBooker() {
           value={flightDates[FLIGHT_DATE.DEPARTURE]}
           onChangeHandler={handleDatesChanged}
           id={FLIGHT_DATE.DEPARTURE}
-          label='Departure Date'
+          label={FLIGHT_BOOKER_LABELS.DEPARTURE_DATE}
         />
         <TheInput
           type='date'
@@ -91,10 +104,10 @@ export default function FlightBooker() {
           onChangeHandler={handleDatesChanged}
           id={FLIGHT_DATE.RETURN}
           disabled={flightType === FLIGHT_TYPE.ONE_WAY}
-          label='Return Date'
+          label={FLIGHT_BOOKER_LABELS.RETURN_DATE}
         />
         <TheButton
-          text='Book'
+          text={FLIGHT_BOOKER_LABELS.BOOK}
           disabled={disabledButton}
           onClickHandler={handleBook}
         />

@@ -2,7 +2,11 @@
 
 import TheInput from '@/components/common/theInput';
 import ContentWrapper from '@/components/layout/contentWrapper';
-import { TEMPERATURE_UNIT, TemperatureUnits } from '@/types/component-types';
+import { TEMPERATURE_CONVERTER_LABELS } from '@/constants/temperatureConverter';
+import {
+  TemperatureUnits,
+  TEMPERATURE_UNIT,
+} from '@/types/temperatureConverter-types';
 import { useState } from 'react';
 
 export default function TemperatureConverter() {
@@ -46,7 +50,7 @@ export default function TemperatureConverter() {
   };
 
   return (
-    <ContentWrapper title='Temperature converter'>
+    <ContentWrapper title={TEMPERATURE_CONVERTER_LABELS.TITLE}>
       <div className='mx-auto flex items-center justify-center gap-8'>
         <TheInput
           onChangeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>

@@ -3,7 +3,7 @@
 import TheButton from '@/components/common/theButton';
 import ContentWrapper from '@/components/layout/contentWrapper';
 import ProgressBar from '@/components/ui/progressBar';
-import { TIMER_LABELS } from '@/constants';
+import { TIMER_LABELS } from '@/constants/timer';
 import { useState } from 'react';
 
 export default function Timer() {
@@ -13,7 +13,7 @@ export default function Timer() {
   const durationInSec = duration / 1000;
   const currentTimeInSec = currentTime / 1000;
   return (
-    <ContentWrapper title='Timer'>
+    <ContentWrapper title={TIMER_LABELS.TITLE}>
       <div className='mx-auto grid w-1/3 grid-cols-2 items-center justify-center gap-8'>
         <p>{TIMER_LABELS.ELAPSED_TIME}</p>
         <ProgressBar
@@ -29,7 +29,7 @@ export default function Timer() {
           <p className='w-8 text-xs'>{durationInSec}s</p>
           <input
             type='range'
-            className='transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200'
+            className='h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-slate-100'
             min={1}
             max={100}
             onChange={(e) => setDuration(Number(e.target.value) * 1000)}
