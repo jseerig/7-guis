@@ -1,8 +1,8 @@
 'use client';
 
-import TheButton from '@/components/common/theButton';
-import ContentWrapper from '@/components/layout/contentWrapper';
-import ProgressBar from '@/components/ui/progressBar';
+import { Button } from '@/components/common/theButton';
+import { ContentWrapper } from '@/components/layout/contentWrapper';
+import { ProgressBar } from '@/components/ui/progressBar';
 import { TIMER_LABELS } from '@/constants/timer';
 import { useState } from 'react';
 
@@ -36,7 +36,7 @@ export default function Timer() {
             value={durationInSec}
           />
         </div>
-        <TheButton
+        <Button
           text='Reset'
           onClickHandler={() => {
             setCurrentTime(0);

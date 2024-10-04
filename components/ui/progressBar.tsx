@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 type ProgressBarProps = {
   end: number;
@@ -6,11 +6,7 @@ type ProgressBarProps = {
   setCurrent: Dispatch<SetStateAction<number>>;
 };
 
-export default function ProgressBar({
-  end,
-  current,
-  setCurrent,
-}: ProgressBarProps) {
+export function ProgressBar({ end, current, setCurrent }: ProgressBarProps) {
   const calculatedWidth =
     end <= current ? 100 : ((100 / (end / 1000)) * current) / 1000;
   useEffect(() => {

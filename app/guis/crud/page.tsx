@@ -1,9 +1,9 @@
 'use client';
 
-import TheButton from '@/components/common/theButton';
-import TheInput from '@/components/common/theInput';
-import ContentWrapper from '@/components/layout/contentWrapper';
-import List from '@/components/ui/list';
+import { Button } from '@/components/common/theButton';
+import { Input } from '@/components/common/theInput';
+import { ContentWrapper } from '@/components/layout/contentWrapper';
+import { List } from '@/components/ui/list';
 import { createPersonForm, CRUD_LABELS } from '@/constants/crud';
 import { Person, PERSON_INFORMATIONS } from '@/types/crud-types';
 import { FormEvent, useEffect, useRef, useState } from 'react';
@@ -74,7 +74,7 @@ export default function CRUD() {
       <div className='mx-auto items-center justify-center'>
         <div className='mb-8 grid grid-cols-2 gap-8'>
           <div className='col-span-2 mr-auto'>
-            <TheInput
+            <Input
               label={CRUD_LABELS.FILTER}
               onChangeHandler={handleFilter}
               disableSpace={true}
@@ -92,14 +92,14 @@ export default function CRUD() {
               onSubmit={handleSubmitPerson}
               className='flex flex-col gap-4'
             >
-              <TheInput
+              <Input
                 label={CRUD_LABELS.NAME}
                 name={PERSON_INFORMATIONS.NAME}
                 disableSpace={true}
                 labelLeft={true}
                 ref={nameRef}
               />
-              <TheInput
+              <Input
                 label={CRUD_LABELS.SURNAME}
                 name={PERSON_INFORMATIONS.SURNAME}
                 disableSpace={true}
@@ -110,19 +110,19 @@ export default function CRUD() {
           </div>
         </div>
         <div className='flex gap-4'>
-          <TheButton
+          <Button
             text={CRUD_LABELS.CREATE}
             form={createPersonForm}
             type='submit'
             disabled={activeIndex !== undefined}
           />
-          <TheButton
+          <Button
             text={CRUD_LABELS.UPDATE}
             disabled={activeIndex === undefined}
             form={createPersonForm}
             type='submit'
           />
-          <TheButton
+          <Button
             text={CRUD_LABELS.DELETE}
             disabled={activeIndex === undefined}
             onClickHandler={deletePerson}

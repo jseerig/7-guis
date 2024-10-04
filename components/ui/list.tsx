@@ -6,7 +6,7 @@ type ListProps = {
   setActiveIndex: (index: number) => void;
 };
 
-export default function List({ list, activeIndex, setActiveIndex }: ListProps) {
+export function List({ list, activeIndex, setActiveIndex }: ListProps) {
   return (
     <div className='size-full border border-green-100 bg-white'>
       {list.map((person, index) => (

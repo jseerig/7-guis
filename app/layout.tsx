@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import NavLink from '@/components/layout/navLink';
+import { NavLink } from '@/components/layout/navLink';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 

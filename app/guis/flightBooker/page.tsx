@@ -1,8 +1,8 @@
 'use client';
 
-import TheButton from '@/components/common/theButton';
-import TheInput from '@/components/common/theInput';
-import ContentWrapper from '@/components/layout/contentWrapper';
+import { Button } from '@/components/common/theButton';
+import { Input } from '@/components/common/theInput';
+import { ContentWrapper } from '@/components/layout/contentWrapper';
 import { FLIGHT_BOOKER_LABELS } from '@/constants/flightBooker';
 import {
   FLIGHT_DATE,
@@ -89,7 +89,7 @@ export default function FlightBooker() {
             </option>
           ))}
         </select>
-        <TheInput
+        <Input
           type='date'
           min={today}
           value={flightDates[FLIGHT_DATE.DEPARTURE]}
@@ -97,7 +97,7 @@ export default function FlightBooker() {
           id={FLIGHT_DATE.DEPARTURE}
           label={FLIGHT_BOOKER_LABELS.DEPARTURE_DATE}
         />
-        <TheInput
+        <Input
           type='date'
           min={flightDates[FLIGHT_DATE.DEPARTURE]}
           value={flightDates[FLIGHT_DATE.RETURN]}
@@ -106,7 +106,7 @@ export default function FlightBooker() {
           disabled={flightType === FLIGHT_TYPE.ONE_WAY}
           label={FLIGHT_BOOKER_LABELS.RETURN_DATE}
         />
-        <TheButton
+        <Button
           text={FLIGHT_BOOKER_LABELS.BOOK}
           disabled={disabledButton}
           onClickHandler={handleBook}

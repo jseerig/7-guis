@@ -1,5 +1,5 @@
-import ContentWrapper from '@/components/layout/contentWrapper';
-import LinkCard from '@/components/ui/linkCard';
+import { ContentWrapper } from '@/components/layout/contentWrapper';
+import { LinkCard } from '@/components/ui/linkCard';
 import { COUNTER_LABELS } from '@/constants/counter';
 import { CRUD_LABELS } from '@/constants/crud';
 import { FLIGHT_BOOKER_LABELS } from '@/constants/flightBooker';

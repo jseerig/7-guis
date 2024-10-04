@@ -7,7 +7,7 @@ type LinkCardProps = {
   icon?: string;
 };
 
-export default function LinkCard({ link, title, icon }: LinkCardProps) {
+export function LinkCard({ link, title, icon }: LinkCardProps) {
   return (
     <Link
       href={link}

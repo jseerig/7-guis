@@ -9,11 +9,7 @@ interface ButtonProps
   onClickHandler?: () => void;
 }
 
-export default function TheButton({
-  text,
-  onClickHandler,
-  ...rest
-}: ButtonProps) {
+export function Button({ text, onClickHandler, ...rest }: ButtonProps) {
   return (
     <button
       {...rest}

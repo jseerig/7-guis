@@ -7,7 +7,7 @@ interface TheInputProps extends ComponentProps<'input'> {
   disableSpace?: boolean;
 }
 
-const TheInput = forwardRef(function TheInput(
+export const Input = forwardRef(function TheInput(
   {
     onChangeHandler,
     label,
@@ -32,5 +32,3 @@ const TheInput = forwardRef(function TheInput(
     </div>
   );
 });
-
-export default TheInput;
