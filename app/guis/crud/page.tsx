@@ -4,6 +4,7 @@ import { Button } from '@/components/common/theButton';
 import { Input } from '@/components/common/theInput';
 import { ContentWrapper } from '@/components/layout/contentWrapper';
 import { List } from '@/components/ui/list';
+import { ListItem } from '@/components/ui/listItem';
 import { createPersonForm, CRUD_LABELS } from '@/constants/crud';
 import { Person, PERSON_INFORMATIONS } from '@/types/crud-types';
 import { FormEvent, useEffect, useRef, useState } from 'react';
@@ -34,11 +35,12 @@ export default function CRUD() {
     event.preventDefault();
     const name = formData.get(PERSON_INFORMATIONS.NAME) as string;
     const surname = formData.get(PERSON_INFORMATIONS.SURNAME) as string;
+
     if (!name || !surname) return;
 
     if (activeIndex !== undefined) {
       const newList = [...list];
-      newList[activeIndex] = { name, surname };
+      newList[activeIndex] = { ...newList[activeIndex], name, surname };
       setList(newList);
       setActiveIndex(undefined);
     } else {
@@ -69,6 +71,7 @@ export default function CRUD() {
     }
   };
 
+  const renderedList = filteredList ? filteredList : list;
   return (
     <ContentWrapper title={CRUD_LABELS.TITLE}>
       <div className='mx-auto items-center justify-center'>
@@ -81,11 +84,25 @@ export default function CRUD() {
               labelLeft={true}
             />
           </div>
-          <List
-            list={filteredList ? filteredList : list}
-            activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
-          />
+          <List>
+            {renderedList.map((person, index) => (
+              <ListItem<
+                Person,
+                [PERSON_INFORMATIONS.SURNAME, PERSON_INFORMATIONS.NAME]
+              >
+                onClick={() =>
+                  setActiveIndex(activeIndex === index ? undefined : index)
+                }
+                key={`${person.surname}-${person.name}-${Math.random()}`}
+                active={activeIndex === index}
+                data={person}
+                properties={[
+                  PERSON_INFORMATIONS.SURNAME,
+                  PERSON_INFORMATIONS.NAME,
+                ]}
+              />
+            ))}
+          </List>
           <div className='flex flex-col gap-4 text-left'>
             <form
               id={createPersonForm}

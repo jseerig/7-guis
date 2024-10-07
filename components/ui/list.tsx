@@ -1,26 +1,14 @@
-import { Person } from '@/types/crud-types';
+import { ReactElement } from 'react';
+import { ListItem } from './listItem';
 
 type ListProps = {
-  list: Person[];
-  activeIndex?: number;
-  setActiveIndex: (index: number) => void;
+  children: ReactElement<typeof ListItem>[];
 };
 
-export function List({ list, activeIndex, setActiveIndex }: ListProps) {
+export function List(props: ListProps) {
   return (
     <div className='size-full border border-green-100 bg-white'>
-      {list.map((person, index) => (
-        <div
-          key={index}
-          className={`flex cursor-pointer gap-2 p-2 text-xs ${
-            index === activeIndex ? 'bg-green-100' : ''
-          }`}
-          onClick={() => setActiveIndex(index)}
-        >
-          <p>{person.surname},</p>
-          <p>{person.name}</p>
-        </div>
-      ))}
+      <ul>{props.children}</ul>
     </div>
   );
 }
