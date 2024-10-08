@@ -1,8 +1,8 @@
 'use client';
 
-import { Input } from '@/components/common/theInput';
+import { Input } from '@/components/common/input';
 import { ContentWrapper } from '@/components/layout/contentWrapper';
-import { TEMPERATURE_CONVERTER_LABELS } from '@/constants/temperatureConverter';
+import { TEMPERATURE_CONVERTER_LABELS } from '@/t18n/temperatureConverter';
 import {
   TemperatureUnits,
   TEMPERATURE_UNIT,
@@ -53,21 +53,23 @@ export default function TemperatureConverter() {
     <ContentWrapper title={TEMPERATURE_CONVERTER_LABELS.TITLE}>
       <div className='mx-auto flex items-center justify-center gap-8'>
         <Input
-          onChangeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             changeTemperaturesOnInput(e, TEMPERATURE_UNIT.CELSIUS)
           }
           type='number'
           label={TEMPERATURE_UNIT.CELSIUS.toUpperCase()}
           value={temperatures.celsius}
+          id={TEMPERATURE_UNIT.CELSIUS}
         />
         <span>=</span>
         <Input
-          onChangeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             changeTemperaturesOnInput(e, TEMPERATURE_UNIT.FAHRENHEIT)
           }
           type='number'
           label={TEMPERATURE_UNIT.FAHRENHEIT.toUpperCase()}
           value={temperatures.fahrenheit}
+          id={TEMPERATURE_UNIT.FAHRENHEIT}
         />
       </div>
     </ContentWrapper>

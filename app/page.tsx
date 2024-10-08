@@ -1,10 +1,10 @@
 import { ContentWrapper } from '@/components/layout/contentWrapper';
 import { LinkCard } from '@/components/ui/linkCard';
-import { COUNTER_LABELS } from '@/constants/counter';
-import { CRUD_LABELS } from '@/constants/crud';
-import { FLIGHT_BOOKER_LABELS } from '@/constants/flightBooker';
-import { TEMPERATURE_CONVERTER_LABELS } from '@/constants/temperatureConverter';
-import { TIMER_LABELS } from '@/constants/timer';
+import { COUNTER_LABELS } from '@/t18n/counter';
+import { CRUD_LABELS } from '@/t18n/crud';
+import { FLIGHT_BOOKER_LABELS } from '@/t18n/flightBooker';
+import { TEMPERATURE_CONVERTER_LABELS } from '@/t18n/temperatureConverter';
+import { TIMER_LABELS } from '@/t18n/timer';
 
 export default function Home() {
   return (

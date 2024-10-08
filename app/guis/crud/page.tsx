@@ -1,11 +1,11 @@
 'use client';
 
-import { Button } from '@/components/common/theButton';
-import { Input } from '@/components/common/theInput';
+import { Button } from '@/components/common/button';
+import { Input } from '@/components/common/input';
 import { ContentWrapper } from '@/components/layout/contentWrapper';
 import { List } from '@/components/ui/list';
 import { ListItem } from '@/components/ui/listItem';
-import { createPersonForm, CRUD_LABELS } from '@/constants/crud';
+import { createPersonForm, CRUD_LABELS } from '@/t18n/crud';
 import { Person, PERSON_INFORMATIONS } from '@/types/crud-types';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 
@@ -79,7 +79,8 @@ export default function CRUD() {
           <div className='col-span-2 mr-auto'>
             <Input
               label={CRUD_LABELS.FILTER}
-              onChangeHandler={handleFilter}
+              id={CRUD_LABELS.FILTER}
+              onChange={handleFilter}
               disableSpace={true}
               labelLeft={true}
             />
@@ -111,6 +112,7 @@ export default function CRUD() {
             >
               <Input
                 label={CRUD_LABELS.NAME}
+                id={CRUD_LABELS.NAME}
                 name={PERSON_INFORMATIONS.NAME}
                 disableSpace={true}
                 labelLeft={true}
@@ -118,6 +120,7 @@ export default function CRUD() {
               />
               <Input
                 label={CRUD_LABELS.SURNAME}
+                id={CRUD_LABELS.SURNAME}
                 name={PERSON_INFORMATIONS.SURNAME}
                 disableSpace={true}
                 labelLeft={true}
@@ -142,7 +145,7 @@ export default function CRUD() {
           <Button
             text={CRUD_LABELS.DELETE}
             disabled={activeIndex === undefined}
-            onClickHandler={deletePerson}
+            onClick={deletePerson}
           />
         </div>
       </div>

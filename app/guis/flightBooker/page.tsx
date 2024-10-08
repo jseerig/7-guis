@@ -1,9 +1,9 @@
 'use client';
 
-import { Button } from '@/components/common/theButton';
-import { Input } from '@/components/common/theInput';
+import { Button } from '@/components/common/button';
+import { Input } from '@/components/common/input';
 import { ContentWrapper } from '@/components/layout/contentWrapper';
-import { FLIGHT_BOOKER_LABELS } from '@/constants/flightBooker';
+import { FLIGHT_BOOKER_LABELS } from '@/t18n/flightBooker';
 import {
   FLIGHT_DATE,
   FLIGHT_TYPE,
@@ -18,14 +18,15 @@ export default function FlightBooker() {
     departureDate: today,
     returnDate: today,
   });
-  const [disabledButton, setDisabledButton] = useState(
-    flightDates.departureDate >= today ? false : true
-  );
+  const isBookingDisabled =
+    flightDates.departureDate < today ||
+    (flightType === FLIGHT_TYPE.RETURN &&
+      (flightDates.returnDate < today ||
+        flightDates.returnDate < flightDates.departureDate));
 
   function handleTypeChanged(event: React.ChangeEvent<HTMLSelectElement>) {
     setFlightType(event.target.value as FLIGHT_TYPE);
     setFlightDates({ departureDate: today, returnDate: today });
-    setDisabledButton(flightDates.departureDate >= today ? false : true);
   }
 
   function handleDatesChanged(event: React.ChangeEvent<HTMLInputElement>) {
@@ -39,10 +40,8 @@ export default function FlightBooker() {
           flightDates.returnDate >= event.target.value)
       ) {
         event.target.classList.remove(...errorStyle);
-        setDisabledButton(false);
       } else {
         event.target.classList.add(...errorStyle);
-        setDisabledButton(true);
       }
     }
 
@@ -52,10 +51,8 @@ export default function FlightBooker() {
         event.target.value >= flightDates.departureDate
       ) {
         event.target.classList.remove(...errorStyle);
-        setDisabledButton(false);
       } else {
         event.target.classList.add(...errorStyle);
-        setDisabledButton(true);
       }
     }
   }
@@ -93,7 +90,7 @@ export default function FlightBooker() {
           type='date'
           min={today}
           value={flightDates[FLIGHT_DATE.DEPARTURE]}
-          onChangeHandler={handleDatesChanged}
+          onChange={handleDatesChanged}
           id={FLIGHT_DATE.DEPARTURE}
           label={FLIGHT_BOOKER_LABELS.DEPARTURE_DATE}
         />
@@ -101,15 +98,15 @@ export default function FlightBooker() {
           type='date'
           min={flightDates[FLIGHT_DATE.DEPARTURE]}
           value={flightDates[FLIGHT_DATE.RETURN]}
-          onChangeHandler={handleDatesChanged}
+          onChange={handleDatesChanged}
           id={FLIGHT_DATE.RETURN}
           disabled={flightType === FLIGHT_TYPE.ONE_WAY}
           label={FLIGHT_BOOKER_LABELS.RETURN_DATE}
         />
         <Button
           text={FLIGHT_BOOKER_LABELS.BOOK}
-          disabled={disabledButton}
-          onClickHandler={handleBook}
+          disabled={isBookingDisabled}
+          onClick={handleBook}
         />
       </div>
     </ContentWrapper>

@@ -1,8 +1,8 @@
 'use client';
 
-import { Button } from '@/components/common/theButton';
+import { Button } from '@/components/common/button';
 import { ContentWrapper } from '@/components/layout/contentWrapper';
-import { COUNTER_LABELS } from '@/constants/counter';
+import { COUNTER_LABELS } from '@/t18n/counter';
 import { useState } from 'react';
 
 export default function Counter() {
@@ -13,7 +13,7 @@ export default function Counter() {
         <span className='text-4xl font-bold'>{counter}</span>
         <Button
           text={COUNTER_LABELS.COUNT}
-          onClickHandler={() => setCounter((prevCount) => prevCount + 1)}
+          onClick={() => setCounter((prevCount) => prevCount + 1)}
         />
       </div>
     </ContentWrapper>
