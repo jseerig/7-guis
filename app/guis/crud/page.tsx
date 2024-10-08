@@ -8,6 +8,7 @@ import { ListItem } from '@/components/ui/listItem';
 import { createPersonForm, CRUD_LABELS } from '@/t18n/crud';
 import { Person, PERSON_INFORMATIONS } from '@/types/crud-types';
 import { FormEvent, useEffect, useRef, useState } from 'react';
+import { v4 as uuid4 } from 'uuid';
 
 export default function CRUD() {
   const [filteredList, setFilteredList] = useState<Person[] | undefined>(
@@ -44,7 +45,7 @@ export default function CRUD() {
       setList(newList);
       setActiveIndex(undefined);
     } else {
-      setList([...list, { name, surname }]);
+      setList([...list, { name, surname, key: uuid4() }]);
       event.currentTarget.reset();
     }
   };
@@ -94,7 +95,7 @@ export default function CRUD() {
                 onClick={() =>
                   setActiveIndex(activeIndex === index ? undefined : index)
                 }
-                key={`${person.surname}-${person.name}-${Math.random()}`}
+                key={person.key}
                 active={activeIndex === index}
                 data={person}
                 properties={[
