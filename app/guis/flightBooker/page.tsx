@@ -103,11 +103,9 @@ export default function FlightBooker() {
           disabled={flightType === FLIGHT_TYPE.ONE_WAY}
           label={FLIGHT_BOOKER_LABELS.RETURN_DATE}
         />
-        <Button
-          text={FLIGHT_BOOKER_LABELS.BOOK}
-          disabled={isBookingDisabled}
-          onClick={handleBook}
-        />
+        <Button disabled={isBookingDisabled} onClick={handleBook}>
+          {FLIGHT_BOOKER_LABELS.BOOK}
+        </Button>
       </div>
     </ContentWrapper>
   );

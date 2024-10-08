@@ -131,22 +131,22 @@ export default function CRUD() {
         </div>
         <div className='flex gap-4'>
           <Button
-            text={CRUD_LABELS.CREATE}
             form={createPersonForm}
             type='submit'
             disabled={activeIndex !== undefined}
-          />
+          >
+            {CRUD_LABELS.CREATE}
+          </Button>
           <Button
-            text={CRUD_LABELS.UPDATE}
             disabled={activeIndex === undefined}
             form={createPersonForm}
             type='submit'
-          />
-          <Button
-            text={CRUD_LABELS.DELETE}
-            disabled={activeIndex === undefined}
-            onClick={deletePerson}
-          />
+          >
+            {CRUD_LABELS.UPDATE}
+          </Button>
+          <Button disabled={activeIndex === undefined} onClick={deletePerson}>
+            {CRUD_LABELS.DELETE}
+          </Button>
         </div>
       </div>
     </ContentWrapper>

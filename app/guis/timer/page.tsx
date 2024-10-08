@@ -37,12 +37,13 @@ export default function Timer() {
           />
         </div>
         <Button
-          text='Reset'
           onClick={() => {
             setCurrentTime(0);
           }}
           className='col-span-2'
-        />
+        >
+          Reset
+        </Button>
       </div>
     </ContentWrapper>
   );

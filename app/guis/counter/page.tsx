@@ -11,10 +11,9 @@ export default function Counter() {
     <ContentWrapper title={COUNTER_LABELS.TITLE}>
       <div className='mx-auto flex items-center justify-center gap-20'>
         <span className='text-4xl font-bold'>{counter}</span>
-        <Button
-          text={COUNTER_LABELS.COUNT}
-          onClick={() => setCounter((prevCount) => prevCount + 1)}
-        />
+        <Button onClick={() => setCounter((prevCount) => prevCount + 1)}>
+          {COUNTER_LABELS.COUNT}
+        </Button>
       </div>
     </ContentWrapper>
   );
